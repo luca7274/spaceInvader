@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alien.cs" />
+    <Compile Include="mur.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tir.cs" />
+    <Compile Include="vaissau.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
