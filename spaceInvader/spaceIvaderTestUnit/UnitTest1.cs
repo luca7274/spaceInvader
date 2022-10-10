@@ -52,17 +52,4 @@ namespace spaceIvaderTestUnit
             Assert.AreEqual(8, result);
         }
     }
-    [TestClass]
-    public class UnitTest5
-    {
-        [TestMethod]
-        public void TestMethod1()
-        {
-            int numberOne = 2;
-            int numberTwo = 2;
-            int result = numberOne + numberTwo;
-
-            Assert.AreEqual(4, result);
-        }
-    }
 }
