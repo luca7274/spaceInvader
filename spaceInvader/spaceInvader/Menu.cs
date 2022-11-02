@@ -46,10 +46,10 @@ namespace spaceInvader
 
                                                                             ";
         public const string ABOUT = @"                                      
-                                   __ _    _ __   _ __  ___   _ __    ___   ___ 
-                                  / _` |  | '_ \ | '__|/ _ \ | '_ \  / _ \ / __|
-                                 | (_| |  | |_) || |  | (_) || |_) || (_) |\__ \
-                                  \__,_|  | .__/ |_|   \___/ | .__/  \___/ |___/
+                                    __ _   _ __   _ __  ___   _ __    ___   ___ 
+                                   / _` | | '_ \ | '__|/ _ \ | '_ \  / _ \ / __|
+                                  | (_| | | |_) || |  | (_) || |_) || (_) |\__ \
+                                   \__,_| | .__/ |_|   \___/ | .__/  \___/ |___/
                                           | |                | |                
                                           |_|                |_|                ";
         public const string LEAVE = @"
@@ -62,5 +62,109 @@ namespace spaceInvader
                                          | |                               
                                          |_|                               ";
 
+
+    public void MenuPrincipal()
+        {
+            Console.SetWindowSize(113, 51);
+            Console.Write(Menu.TITLE);
+            Console.Write(Menu.PLAY);
+            Console.Write(Menu.OPTION);
+            Console.Write(Menu.HIGHSCORE);
+            Console.Write(Menu.ABOUT);
+            Console.Write(Menu.LEAVE);
+
+            string fleche = "--->";
+            int positionX = 29;
+            int positionY = 15;
+            Console.SetCursorPosition(positionX, positionY);
+            Console.Write(fleche);
+            Console.SetCursorPosition(positionX, positionY);
+            while (true)
+            {
+                ConsoleKeyInfo keys = Console.ReadKey();
+                if (keys.Key == ConsoleKey.DownArrow)
+                {
+                    Console.Write("   ");
+                    switch (positionY)
+                    {
+                        case 15:
+                            Console.Write("   ");
+                            positionY += 8;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 23:
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write("   ");
+                            positionY += 7;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 30:
+                            positionY += 6;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 36:
+                            positionY += 8;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 44:
+                            positionY = 15;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                    }
+                }
+                if (keys.Key == ConsoleKey.UpArrow)
+                {
+                    switch (positionY)
+                    {
+                        case 15:
+                            Console.Write("   ");
+                            positionY = 44;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 23:
+                            Console.Write("   ");
+                            positionY -= 8;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 30:
+                            Console.Write("   ");
+                            positionY -= 7;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 36:
+                            Console.Write("   ");
+                            positionY -= 6;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 44:
+                            Console.Write("   ");
+                            positionY -= 8;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
