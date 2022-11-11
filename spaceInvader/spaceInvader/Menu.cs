@@ -106,6 +106,7 @@ namespace spaceInvader
             Console.SetCursorPosition(positionX, positionY);
             while (true)
             {
+                #region[flecheBas]
                 ConsoleKeyInfo keys = Console.ReadKey();
                 if (keys.Key == ConsoleKey.DownArrow)
                 {
@@ -147,6 +148,8 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[flecheHaut]
                 if (keys.Key == ConsoleKey.UpArrow)
                 {
                     switch (positionY)
@@ -189,6 +192,8 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[enter]
                 if (keys.Key == ConsoleKey.Enter)
                 {
                     switch (positionY)
@@ -210,6 +215,7 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
 
             }
         }
