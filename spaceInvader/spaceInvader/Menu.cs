@@ -8,6 +8,7 @@ namespace spaceInvader
 {
     internal class Menu
     {
+        #region[tritre]
         public const string TITLE = @"
                      (                               (                                        
                      )\ )                            )\ )                     (               
@@ -85,8 +86,48 @@ namespace spaceInvader
                                  | (_) | |_| | |            | | | | (_) | | | |
                                   \___/ \__,_|_|            |_| |_|\___/|_| |_|
                                                                           ";
+        public const string BESTSCORE = @"
+                                        _ _ _                                           
+                         _ __ ___   ___(_) | | ___ _   _ _ __   ___  ___ ___  _ __ ___  
+                        | '_ ` _ \ / _ \ | | |/ _ \ | | | '__| / __|/ __/ _ \| '__/ _ \ 
+                        | | | | | |  __/ | | |  __/ |_| | |    \__ \ (_| (_) | | |  __/ 
+                        |_| |_| |_|\___|_|_|_|\___|\__,_|_|    |___/\___\___/|_|  \___| 
+                                                                          ";
+        public const string LASTSCORE = @"
+                              _                 _                                     
+                           __| | ___ _ __ _ __ (_) ___ _ __   ___  ___ ___  _ __ ___  
+                          / _` |/ _ \ '__| '_ \| |/ _ \ '__| / __|/ __/ _ \| '__/ _ \ 
+                         | (_| |  __/ |  | | | | |  __/ |    \__ \ (_| (_) | | |  __/ 
+                          \__,_|\___|_|  |_| |_|_|\___|_|    |___/\___\___/|_|  \___| 
+                                                                          ";
+        public const string Music = @"              
+                                                         _               _
+                                           _____ _ _ ___|_|___ _ _ ___  |_|
+                                          |     | | |_ -| | . | | | -_|  _
+                                          |_|_|_|___|___|_|_  |___|___| |_|
+                                                            |_|        
+                                                                          ";
+        public const string DIFICULTY = @"    
+                                         _ _ ___ ___ _         _ _         _
+                                       _| |_|  _|  _|_|___ _ _| | |_ ___  |_|
+                                      | . | |  _|  _| |  _| | | |  _| -_|  _
+                                      |___|_|_| |_| |_|___|___|_|_| |___| |_|
+                                                                          ";
+        public const string EASY = @"        
+                                               ___         _ _     
+                                              |  _|___ ___|_| |___ 
+                                              |  _| .'|  _| | | -_|
+                                              |_| |__,|___|_|_|___|
+                                                                          ";
+        public const string HARD = @"
+                                             _ _ ___ ___ _     _ _     
+                                           _| |_|  _|  _|_|___|_| |___ 
+                                          | . | |  _|  _| |  _| | | -_|
+                                          |___|_|_| |_| |_|___|_|_|___|
+                                                                          ";
+        #endregion
 
-
+        #region[menuPrincipal]
         public void MenuPrincipal()
         {
             Console.SetWindowSize(113, 51);
@@ -219,24 +260,131 @@ namespace spaceInvader
 
             }
         }
+        #endregion
+        #region[menuOption]
         public void MenuOption()
         {
             Console.Clear();
-            Console.Write(OPTION);
+            Console.Write(OPTION + "\n\n\n");
+            Console.Write(Music + "\n\n");
+            Console.Write(DIFICULTY + "\n\n");
+            Console.Write(EASY + "\n\n");
+            Console.Write(HARD + "\n\n");
 
+            bool dificulty = true;
+            int positionX = 46;
+            int positionY = 31;
+            Console.SetCursorPosition(positionX, positionY);
+            Console.Write("_____________________");
 
-            ConsoleKeyInfo keys = Console.ReadKey();
-            if (keys.Key == ConsoleKey.Backspace)
+            string fleche = "--->";
+            positionX = 34;
+            positionY = 14;
+            Console.SetCursorPosition(positionX, positionY);
+            Console.Write(fleche);
+            Console.SetCursorPosition(positionX, positionY);
+            while (true)
             {
-                MenuPrincipal();
+                ConsoleKeyInfo keys = Console.ReadKey();
+                if (keys.Key == ConsoleKey.DownArrow)
+                {
+                    Console.Write("   ");
+                    switch (positionY)
+                    {
+                        case 14:
+                            Console.Write("   ");
+                            positionY += 15;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 29:
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write("   ");
+                            positionY += 7;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 36:
+                            positionY = 14;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                    }
+                }
+                if (keys.Key == ConsoleKey.UpArrow)
+                {
+                    Console.Write("   ");
+                    switch (positionY)
+                    {
+                        case 14:
+                            Console.Write("   ");
+                            positionY = 36;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 29:
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write("   ");
+                            positionY -= 15;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                        case 36:
+                            positionY -= 7;
+                            Console.SetCursorPosition(positionX, positionY);
+                            Console.Write(fleche);
+                            Console.SetCursorPosition(positionX, positionY);
+                            break;
+                    }
+                }
+                if (keys.Key == ConsoleKey.Enter)
+                {
+                    switch (positionY)
+                    {
+                        case 14:
+                            break;
+                        case 29:
+                            if(dificulty == false)
+                            {
+
+                            }
+                            else
+                            {
+                                positionX = 46;
+                                positionY = 31;
+                                Console.SetCursorPosition(positionX, positionY);
+                                Console.Write("                      ");
+
+                                positionX = 42;
+                                positionY = 38;
+                                Console.SetCursorPosition(positionX, positionY);
+                                Console.Write("_____________________________");
+                            }
+                            break;
+                        case 36:
+                            break;
+                    }
+                }
+                if (keys.Key == ConsoleKey.Backspace)
+                {
+                    MenuPrincipal();
+                }
             }
 
         }
+        #endregion
+        #region[menuScore]
         public void MenuScore()
         {
             Console.Clear();
-            Console.Write(HIGHSCORE);
-
+            Console.Write(HIGHSCORE + "\n\n\n\n\n");
+            Console.Write(BESTSCORE + "\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            Console.Write(LASTSCORE);
 
             ConsoleKeyInfo keys = Console.ReadKey();
             if (keys.Key == ConsoleKey.Backspace)
@@ -244,6 +392,8 @@ namespace spaceInvader
                 MenuPrincipal();
             }
         }
+        #endregion
+        #region[menuAPropos]
         public void MenuAPropos()
         {
             Console.Clear();
@@ -256,6 +406,8 @@ namespace spaceInvader
                 MenuPrincipal();
             }
         }
+        #endregion
+        #region[menuQuitter]
         public void MenuQuitter()
         {
             Console.Clear();
@@ -271,6 +423,7 @@ namespace spaceInvader
 
             while (true)
             {
+                #region[fleche droit]
                 ConsoleKeyInfo keys = Console.ReadKey();
                 if (keys.Key == ConsoleKey.RightArrow)
                 {
@@ -285,6 +438,8 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[fleche gauche]
                 if (keys.Key == ConsoleKey.LeftArrow)
                 {
                     switch (positionX)
@@ -298,6 +453,8 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[enter]
                 if (keys.Key == ConsoleKey.Enter)
                 {
                     switch (positionX)
@@ -310,7 +467,9 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
             }
         }
+        #endregion
     }
 }

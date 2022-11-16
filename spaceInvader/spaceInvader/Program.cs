@@ -13,7 +13,7 @@ namespace spaceInvader
             Menu menu = new Menu();
             while (true)
             {
-                Console.CursorVisible = false;
+                //Console.CursorVisible = false;
                 menu.MenuPrincipal();
             }
         }
