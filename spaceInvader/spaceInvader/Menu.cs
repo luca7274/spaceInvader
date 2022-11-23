@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace spaceInvader
 {
@@ -100,7 +101,7 @@ namespace spaceInvader
                          | (_| |  __/ |  | | | | |  __/ |    \__ \ (_| (_) | | |  __/ 
                           \__,_|\___|_|  |_| |_|_|\___|_|    |___/\___\___/|_|  \___| 
                                                                           ";
-        public const string Music = @"              
+        public const string MUSIC = @"              
                                                          _               _
                                            _____ _ _ ___|_|___ _ _ ___  |_|
                                           |     | | |_ -| | . | | | -_|  _
@@ -124,6 +125,19 @@ namespace spaceInvader
                                            _| |_|  _|  _|_|___|_| |___ 
                                           | . | |  _|  _| |  _| | | -_|
                                           |___|_|_| |_| |_|___|_|_|___|
+                                                                          ";
+        public const string ON = @"
+                                                                                                
+                                                                                                
+                                                                                 ___ ___       
+                                                                                | . |   |        
+                                                                                |___|_|_|      
+                                                                          ";
+        public const string OFF = @"
+                                                                                     ___ ___ 
+                                                                                 ___|  _|  _|
+                                                                                | . |  _|  _|
+                                                                                |___|_| |_|  
                                                                           ";
         #endregion
 
@@ -266,12 +280,16 @@ namespace spaceInvader
         {
             Console.Clear();
             Console.Write(OPTION + "\n\n\n");
-            Console.Write(Music + "\n\n");
+            Console.Write(OFF);
+            Console.SetCursorPosition(0,11);
+            Console.Write(MUSIC + "\n\n");
             Console.Write(DIFICULTY + "\n\n");
             Console.Write(EASY + "\n\n");
             Console.Write(HARD + "\n\n");
 
-            bool dificulty = true;
+            bool music = false;
+            bool hard = false;
+
             int positionX = 46;
             int positionY = 31;
             Console.SetCursorPosition(positionX, positionY);
@@ -285,6 +303,7 @@ namespace spaceInvader
             Console.SetCursorPosition(positionX, positionY);
             while (true)
             {
+                #region[flecheBas]
                 ConsoleKeyInfo keys = Console.ReadKey();
                 if (keys.Key == ConsoleKey.DownArrow)
                 {
@@ -314,6 +333,8 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[flecheHaut]
                 if (keys.Key == ConsoleKey.UpArrow)
                 {
                     Console.Write("   ");
@@ -342,19 +363,59 @@ namespace spaceInvader
                             break;
                     }
                 }
+                #endregion
+                #region[flecheEnter]
                 if (keys.Key == ConsoleKey.Enter)
                 {
                     switch (positionY)
                     {
                         case 14:
-                            break;
-                        case 29:
-                            if(dificulty == false)
+                            if(music == false)
                             {
-
+                                music = true;
+                                Console.SetCursorPosition(0,10);
+                                Console.Write(ON);
+                                Console.SetCursorPosition(0, 11);
+                                Console.Write(MUSIC);
+                                Console.SetCursorPosition(positionX, positionY);
                             }
                             else
                             {
+                                music = false;
+                                Console.SetCursorPosition(0, 11);
+                                Console.Write(OFF);
+                                Console.SetCursorPosition(0, 11);
+                                Console.Write(MUSIC);
+                                Console.SetCursorPosition(positionX, positionY);
+                            }
+
+                            break;
+                        case 29:
+                            if(hard == false)
+                            {
+                                Console.SetCursorPosition(positionX, positionY);
+                            }
+                            else
+                            {
+                                hard = false;
+                                positionX = 42;
+                                positionY = 38;
+                                Console.SetCursorPosition(positionX, positionY);
+                                Console.Write("                             ");
+
+                                positionX = 46;
+                                positionY = 31;
+                                Console.SetCursorPosition(positionX, positionY);
+                                Console.Write("_____________________");
+                                positionX = 34;
+                                positionY = 29;
+                                Console.SetCursorPosition(positionX, positionY);
+                            }
+                            break;
+                        case 36:
+                            if(hard == false)
+                            {
+                                hard = true;
                                 positionX = 46;
                                 positionY = 31;
                                 Console.SetCursorPosition(positionX, positionY);
@@ -364,16 +425,36 @@ namespace spaceInvader
                                 positionY = 38;
                                 Console.SetCursorPosition(positionX, positionY);
                                 Console.Write("_____________________________");
+                                positionX = 34;
+                                positionY = 36;
+                                Console.SetCursorPosition(positionX, positionY);
                             }
-                            break;
-                        case 36:
+                            else
+                            {
+                                Console.SetCursorPosition(positionX, positionY);
+                            }
                             break;
                     }
                 }
+                #endregion
+                #region[backspace]
                 if (keys.Key == ConsoleKey.Backspace)
                 {
+                    string path = "optionData.txt";
+                    string text = "music: " + music + Environment.NewLine + "hard: " + hard;
+                    File.WriteAllText(path, text);
+                    //permet de lire le fichier txt et de verrifier les valleur
+
+                    //foreach (string line in File.ReadAllLines(path))
+                    //{
+                    //    if (line == "music: True")
+                    //    {
+                    //        Console.WriteLine("ca marche");
+                    //    }
+                    //}
                     MenuPrincipal();
                 }
+                #endregion
             }
 
         }
@@ -385,6 +466,23 @@ namespace spaceInvader
             Console.Write(HIGHSCORE + "\n\n\n\n\n");
             Console.Write(BESTSCORE + "\n\n\n\n\n\n\n\n\n\n\n\n\n");
             Console.Write(LASTSCORE);
+            //todo
+            string path = "scoreData.txt";
+            string[] message = { "hello", "toi" };
+            File.WriteAllLines(path, message);
+            string[] lignes = File.ReadAllLines(path);
+            foreach(string ligneline in lignes)
+            {
+                Console.WriteLine(ligneline[1]);
+            }
+            foreach(string line in File.ReadLines(path))
+            {
+                if (line.Contains("test2"))
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            //fin todo
 
             ConsoleKeyInfo keys = Console.ReadKey();
             if (keys.Key == ConsoleKey.Backspace)
