@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="alien.cs" />
+    <Compile Include="Alien.cs" />
+    <Compile Include="Jeu.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="mur.cs" />
     <Compile Include="Program.cs" />

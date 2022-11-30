@@ -9,6 +9,7 @@ namespace spaceInvader
 {
     internal class Menu
     {
+        public Jeu jeu = new Jeu();
         #region[tritre]
         public const string TITLE = @"
                      (                               (                                        
@@ -254,7 +255,7 @@ namespace spaceInvader
                     switch (positionY)
                     {
                         case 15:
-
+                            MenuJeu();
                             break;
                         case 23:
                             MenuOption();
@@ -271,6 +272,22 @@ namespace spaceInvader
                     }
                 }
                 #endregion
+
+            }
+        }
+        #endregion
+        #region[menuJeu]
+        public void MenuJeu()
+        {
+            Console.Clear();
+            Console.Write("entrer vote nom: ");
+            while (true)
+            {
+                ConsoleKeyInfo keys = Console.ReadKey();
+                if (keys.Key == ConsoleKey.Enter)
+                {
+                    jeu.jeu();
+                }
 
             }
         }
@@ -462,32 +479,30 @@ namespace spaceInvader
         #region[menuScore]
         public void MenuScore()
         {
+            string path = "scoreData.txt";
             Console.Clear();
             Console.Write(HIGHSCORE + "\n\n\n\n\n");
-            Console.Write(BESTSCORE + "\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            Console.Write(LASTSCORE);
-            //todo
-            string path = "scoreData.txt";
-            string[] message = { "hello", "toi" };
-            File.WriteAllLines(path, message);
-            string[] lignes = File.ReadAllLines(path);
-            foreach(string ligneline in lignes)
+            Console.Write(BESTSCORE + "\n\n\n");
+            using (var reader = new StreamReader(path))
             {
-                Console.WriteLine(ligneline[1]);
+                reader.ReadLine();
+                Console.WriteLine("                                                    " + reader.ReadLine()+ "\n\n\n\n\n\n\n\n\n\n");
             }
-            foreach(string line in File.ReadLines(path))
+            Console.Write(LASTSCORE + "\n\n\n");
+            using (var reader = new StreamReader(path))
             {
-                if (line.Contains("test2"))
+                reader.ReadLine();
+                reader.ReadLine();
+                reader.ReadLine();
+                Console.WriteLine("                                                    " +  reader.ReadLine());
+            }
+            while (true)
+            {
+                ConsoleKeyInfo keys = Console.ReadKey();
+                if (keys.Key == ConsoleKey.Backspace)
                 {
-                    Console.WriteLine(line);
+                    MenuPrincipal();
                 }
-            }
-            //fin todo
-
-            ConsoleKeyInfo keys = Console.ReadKey();
-            if (keys.Key == ConsoleKey.Backspace)
-            {
-                MenuPrincipal();
             }
         }
         #endregion
@@ -496,12 +511,16 @@ namespace spaceInvader
         {
             Console.Clear();
             Console.Write(ABOUT + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            Console.WriteLine("Règle du jeu: Dans le Space Invader vous controller un canon qui se dirige de droite à gauche \net qui tire des munitions. Les ennemis sont des aliens qui apparaissent en haut à gauche \net qui se déplacent de gauche à droite, \ndès que les aliens touchent un bord, ils repartent dans le sens opposé. Le but du joueur est \nd'élliminer tous les aliens avant qu'ils arrivent en bas. Le joueur à trois vies. \nQuand le joueur n'a plus de vies la partie se termine.\n\n");
+            Console.WriteLine("contrôle: Pour se déplacer de droite à gauche il faut utiliser les flèches directionnelles.\nPour povoir tirer, il faut utiliser les flèches directionnelle.");
 
-
-            ConsoleKeyInfo keys = Console.ReadKey();
-            if (keys.Key == ConsoleKey.Backspace)
+            while (true)
             {
-                MenuPrincipal();
+                ConsoleKeyInfo keys = Console.ReadKey();
+                if (keys.Key == ConsoleKey.Backspace)
+                {
+                    MenuPrincipal();
+                }
             }
         }
         #endregion
