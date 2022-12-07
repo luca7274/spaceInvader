@@ -281,6 +281,9 @@ namespace spaceInvader
         {
             Console.Clear();
             Console.Write("entrer vote nom: ");
+            string name = Console.ReadLine();
+            string path = name + "-score.txt";
+            File.WriteAllText(path, "text à remplacer");
             while (true)
             {
                 ConsoleKeyInfo keys = Console.ReadKey();

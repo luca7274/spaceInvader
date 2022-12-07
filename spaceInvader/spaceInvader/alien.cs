@@ -17,6 +17,15 @@ namespace spaceInvader
                "█ █▀▀▀▀█ █",
                "   ▀  ▀   ",
         };
+        public string[] ennemis
+        {
+            get { return _aliens; }
+        }
+        public Alien(int X, int Y)
+        {
+            _x = X;
+            _y = Y;
+        }
         public int X
         {
             get { return _x; }
@@ -26,15 +35,6 @@ namespace spaceInvader
         {
             get { return _y; }
             set { _y = value; }
-        }
-        public string[] Aliens
-        {
-            get { return _aliens; }
-        }
-        public Alien(int X, int Y)
-        {
-            _x = X;
-            _y = Y;
         }
     }
 }

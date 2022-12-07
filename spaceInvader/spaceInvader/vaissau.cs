@@ -16,6 +16,10 @@ namespace spaceInvader
             " █ ",
             "███"
         };
+        public string[] Joueur
+        {
+            get { return _joueur; }
+        }
 
         public vaissau(int X, int Y)
         {
@@ -31,10 +35,6 @@ namespace spaceInvader
         {
             get { return _y; }
             set { _y = value; }
-        }
-        public string[] Joueur
-        {
-            get { return _joueur; }
         }
     }
 }
