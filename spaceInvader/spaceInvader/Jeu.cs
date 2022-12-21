@@ -10,6 +10,8 @@ namespace spaceInvader
     internal class Jeu
     {
         private vaissau _vaissau = new vaissau(56, 48);
+        private Tir _tir = new Tir(56, 47);
+        private bool _isTir = false;
         private List<Alien> alienList = new List<Alien>();
         //private Alien _alien = new Alien(1, 1);
         private bool alienDroite = true;
@@ -40,11 +42,15 @@ namespace spaceInvader
 
             afficherVaissau();
             afficherAlien();
-            while (true)
+            while (alienFin == false)
             {
                 bougerVaissau();
+                //bougerTir();
                 bougerAlien();
             }
+            Thread.Sleep(2000);
+            Menu menu = new Menu();
+            menu.MenuGameOver();
         }
 
         #region[afficherVaissau]
@@ -105,9 +111,34 @@ namespace spaceInvader
                     }
                 }
                 #endregion
+                //#region[espace]
+                //if (keys.Key == ConsoleKey.Spacebar)
+                //{
+                //    _isTir = true;
+                //}
+                //#endregion
             }
         }
         #endregion
+        //public void positionTir()
+        //{
+        //    _tir.Y -= 1;
+        //}
+        //public void afficherTir()
+        //{
+        //    Console.SetCursorPosition(_tir.X, _tir.Y);
+        //    Console.Write(_tir._Tir);
+        //}
+        //public void bougerTir()
+        //{
+        //    DateTime date = DateTime.Now;
+        //    if (date.Millisecond == alienMillisecond1 || date.Millisecond == alienMillisecond2 || date.Millisecond == alienMillisecond3 || date.Millisecond == alienMillisecond4 && _isTir == true)
+        //    {
+        //        afficherTir();
+        //        positionTir();
+        //    }
+
+        //}
 
         #region[afficherAlein]
         public void afficherAlien()
@@ -175,16 +206,6 @@ namespace spaceInvader
             {
                 alienFin = true;
             }
-            if(alienFin == true)
-            {
-                foreach (var alien in alienList)
-                {
-                    afficherAlien();
-                    Thread.Sleep(2000);
-                    Menu menu = new Menu();
-                    menu.MenuGameOver();
-                }
-            }
         }
         #endregion
         #region[bougerAlien]
@@ -200,6 +221,5 @@ namespace spaceInvader
             }
         }
         #endregion
-        //todo generer les aliens
     }
 }

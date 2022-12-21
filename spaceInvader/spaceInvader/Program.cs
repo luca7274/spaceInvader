@@ -11,10 +11,10 @@ namespace spaceInvader
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            //a enlever plus tard--------
             Console.SetWindowSize(113, 51);
-            Jeu jeu = new Jeu();
-            jeu.jeu();
+            //a enlever plus tard--------
+            //Jeu jeu = new Jeu();
+            //jeu.jeu();
             //---------------------------
             while (true)
             {

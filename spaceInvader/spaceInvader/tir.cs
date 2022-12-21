@@ -6,11 +6,32 @@ using System.Threading.Tasks;
 
 namespace spaceInvader
 {
-    internal class tir
+    internal class Tir
     {
-        public tir()
+        private int _x;
+        private int _y;
+        private string _tir = " | ";
+        public string _Tir
         {
-
+            get { return _tir; }
+            set { _tir = value; }
         }
+
+        public Tir(int X, int Y)
+        {
+            _x = X;
+            _y = Y;
+        }
+        public int X
+        {
+            get { return _x; }
+            set { _x = value; }
+        }
+        public int Y
+        {
+            get { return _y; }
+            set { _y = value; }
+        }
+
     }
 }
