@@ -165,6 +165,8 @@ namespace spaceInvader
             Console.Write(Menu.HIGHSCORE);
             Console.Write(Menu.ABOUT);
             Console.Write(Menu.LEAVE);
+            Console.SetCursorPosition(108, 51);
+            Console.Write("v1.0");
 
             string fleche = "--->";
             int positionX = 29;
